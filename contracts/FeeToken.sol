@@ -18,7 +18,10 @@ contract FeeToken is ERC20, Ownable {
 
     constructor(address account, address wallet_, string memory name_, string memory symbol_) ERC20(name_, symbol_) {
         wallet = wallet_;
+        
         _mint(account, 12884901889e18);
+        
+        event NewWallet(address(0), wallet);
     }
 
     /// @notice The function sets the new fee percent.
