@@ -16,7 +16,8 @@ contract FeeToken is ERC20, Ownable {
     event NewFee(uint oldFee, uint newFee);
     event NewWallet(address oldWallet, address newWallet);
 
-    constructor(address account, string memory name_, string memory symbol_) ERC20(name_, symbol_) {
+    constructor(address account, address wallet_, string memory name_, string memory symbol_) ERC20(name_, symbol_) {
+        wallet = wallet_;
         _mint(account, 12884901889e18);
     }
 
