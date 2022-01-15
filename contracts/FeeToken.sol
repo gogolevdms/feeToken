@@ -10,8 +10,8 @@ import '@openzeppelin/contracts/access/Ownable.sol';
  */
 
 contract FeeToken is ERC20, Ownable {
-    uint256 public taxFee = 25;
-    uint256 public denom = 10000;
+    uint public taxFee = 25;
+    uint public denom = 10000;
 
     address public wallet;
 
@@ -26,10 +26,10 @@ contract FeeToken is ERC20, Ownable {
     /// @dev Stores the unsigned int value in the state variable 'taxFee'.
     /// @param _taxFee The new value to store.
     /// @return The bool value.
-    function _setFee(uint256 _taxFee) external onlyOwner returns (bool) {
-        emit SetFee(taxFee, _taxFee);
-
+    function _setFee(uint _taxFee) external onlyOwner returns (bool) {
         taxFee = _taxFee;
+
+        emit SetFee(taxFee, _taxFee);
 
         return true;
     }
@@ -39,9 +39,9 @@ contract FeeToken is ERC20, Ownable {
     /// @param _wallet The new value to store.
     /// @return The bool value.
     function _setWallet(address _wallet) external onlyOwner returns (bool) {
-        emit SetWallet(wallet, _wallet);
-
         wallet = _wallet;
+
+        emit SetWallet(wallet, _wallet);
 
         return true;
     }
@@ -61,5 +61,4 @@ contract FeeToken is ERC20, Ownable {
         super._transfer(sender, recipient, net);
         super._transfer(sender, wallet, fee);
     }
-
 }
