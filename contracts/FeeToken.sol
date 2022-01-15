@@ -25,7 +25,7 @@ contract FeeToken is ERC20, Ownable {
     }
 
     /// @notice The function sets the new fee percent.
-    /// @param _newFee The fee value.
+    /// @param newFee_ The fee value.
     /// @return The bool value.
     function _setFee(uint newFee_) external onlyOwner returns (bool) {
         uint oldFee = fee;
@@ -37,7 +37,7 @@ contract FeeToken is ERC20, Ownable {
     }
 
     /// @notice The function sets a new wallet.
-    /// @param _wallet The new value to store.
+    /// @param newWallet_ The new value to store.
     /// @return The bool value.
     function _setWallet(address newWallet_) external onlyOwner returns (bool) {
         address oldWallet = wallet;
